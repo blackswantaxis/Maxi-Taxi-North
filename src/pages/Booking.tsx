@@ -4,10 +4,47 @@ import { Phone, Mail, Clock, ShieldCheck, Calendar, MapPin, CheckCircle, Message
 
 export default function Booking() {
   const [submitted, setSubmitted] = React.useState(false);
+  const [formData, setFormData] = React.useState({
+    name: '',
+    phone: '',
+    service: 'Wheelchair Accessible Taxi',
+    date: '',
+    time: '',
+    pickup: '',
+    destination: '',
+    notes: ''
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Construct email body
+    const subject = `New Booking Request: ${formData.name} - ${formData.date}`;
+    const body = `
+New Booking Request Details:
+---------------------------
+Name: ${formData.name}
+Phone: ${formData.phone}
+Service: ${formData.service}
+Date: ${formData.date}
+Time: ${formData.time}
+Pickup: ${formData.pickup}
+Destination: ${formData.destination}
+Notes: ${formData.notes}
+---------------------------
+    `.trim();
+
+    const mailtoLink = `mailto:northcabswa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
     setSubmitted(true);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -46,17 +83,38 @@ export default function Booking() {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-gray-700">Full Name</label>
-                        <input required type="text" className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" placeholder="John Doe" />
+                        <input 
+                          required 
+                          type="text" 
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" 
+                          placeholder="John Doe" 
+                        />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-gray-700">Phone Number</label>
-                        <input required type="tel" className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" placeholder="0400 000 000" />
+                        <input 
+                          required 
+                          type="tel" 
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" 
+                          placeholder="0400 000 000" 
+                        />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-gray-700">Service Type</label>
-                      <select className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all">
+                      <select 
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all"
+                      >
                         <option>Wheelchair Accessible Taxi</option>
                         <option>12 Passenger Maxi Taxi</option>
                         <option>Airport Transfer</option>
@@ -68,27 +126,63 @@ export default function Booking() {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-gray-700">Pickup Date</label>
-                        <input required type="date" className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" />
+                        <input 
+                          required 
+                          type="date" 
+                          name="date"
+                          value={formData.date}
+                          onChange={handleChange}
+                          className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" 
+                        />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-gray-700">Pickup Time</label>
-                        <input required type="time" className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" />
+                        <input 
+                          required 
+                          type="time" 
+                          name="time"
+                          value={formData.time}
+                          onChange={handleChange}
+                          className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" 
+                        />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-gray-700">Pickup Address</label>
-                      <input required type="text" className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" placeholder="Street address, suburb" />
+                      <input 
+                        required 
+                        type="text" 
+                        name="pickup"
+                        value={formData.pickup}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" 
+                        placeholder="Street address, suburb" 
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-gray-700">Destination</label>
-                      <input required type="text" className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" placeholder="Where are you heading?" />
+                      <input 
+                        required 
+                        type="text" 
+                        name="destination"
+                        value={formData.destination}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all" 
+                        placeholder="Where are you heading?" 
+                      />
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-gray-700">Additional Notes (Passengers, Luggage, etc.)</label>
-                      <textarea className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all h-32" placeholder="Tell us about any special requirements..."></textarea>
+                      <textarea 
+                        name="notes"
+                        value={formData.notes}
+                        onChange={handleChange}
+                        className="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none transition-all h-32" 
+                        placeholder="Tell us about any special requirements..."
+                      ></textarea>
                     </div>
 
                     <button type="submit" className="w-full bg-yellow-400 text-black py-5 rounded-2xl font-bold text-xl hover:bg-yellow-500 transition-all shadow-xl shadow-yellow-400/20">

@@ -25,81 +25,58 @@ export default function Home() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white pt-16 pb-24 lg:pt-24 lg:pb-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-7"
-            >
-              <div className="inline-flex items-center space-x-2 bg-yellow-400 text-black px-4 py-1.5 rounded-full text-sm font-bold mb-8 shadow-lg shadow-yellow-400/20">
-                <Star className="h-4 w-4 fill-current" />
-                <span>Perth's #1 Rated Maxi Taxi Service</span>
-              </div>
-              <h1 className="text-6xl lg:text-8xl font-black tracking-tight text-gray-900 leading-[0.9] mb-8 uppercase">
-                Reliable <br />
-                <span className="text-yellow-500">Maxi Taxi</span> <br />
-                <span className="text-gray-400">North Perth</span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-xl font-medium">
-                Specializing in Wheelchair Accessible transport and 12-passenger Maxi Taxis. 
-                Safe, spacious, and always on time for airport transfers, events, and medical appointments.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="tel:0411946000"
-                  className="flex items-center justify-center space-x-3 bg-black text-white px-8 py-5 rounded-2xl text-lg font-bold hover:bg-gray-800 transition-all shadow-2xl shadow-black/20 group"
-                >
-                  <Phone className="h-6 w-6 group-hover:rotate-12 transition-transform" />
-                  <span>0411 946 000</span>
-                </a>
-                <a
-                  href="https://wa.me/61411946000"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-3 bg-green-500 text-white px-8 py-5 rounded-2xl text-lg font-bold hover:bg-green-600 transition-all shadow-xl shadow-green-500/20 group"
-                >
-                  <MessageCircle className="h-6 w-6 group-hover:scale-110 transition-transform" />
-                  <span>WhatsApp</span>
-                </a>
-                <Link
-                  to="/booking"
-                  className="flex items-center justify-center space-x-3 bg-yellow-400 text-black px-8 py-5 rounded-2xl text-lg font-bold hover:bg-yellow-500 transition-all shadow-xl shadow-yellow-400/20"
-                >
-                  <Calendar className="h-6 w-6" />
-                  <span>Book Online</span>
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="lg:col-span-5 relative mt-12 lg:mt-0"
-            >
-              <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-gray-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1549194388-2469d59ec69c?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Maxi Taxi North Perth" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              {/* Floating Badge */}
-              <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-[2rem] shadow-2xl border border-gray-100 max-w-[280px]">
-                <div className="flex items-center space-x-4 mb-3">
-                  <div className="bg-yellow-400 p-3 rounded-xl">
-                    <Accessibility className="h-8 w-8 text-black" />
-                  </div>
-                  <span className="font-black text-gray-900 leading-tight text-lg">Wheelchair <br />Specialists</span>
-                </div>
-                <p className="text-sm text-gray-500 font-medium">Safety-first positioning and professional assistance for all accessibility needs.</p>
-              </div>
-            </motion.div>
-          </div>
+      <section className="relative overflow-hidden bg-white pt-24 pb-32 lg:pt-32 lg:pb-48">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="inline-flex items-center space-x-2 bg-yellow-400 text-black px-6 py-2 rounded-full text-sm font-bold mb-10 shadow-lg shadow-yellow-400/20">
+              <Star className="h-4 w-4 fill-current" />
+              <span>Perth's #1 Rated Maxi Taxi Service</span>
+            </div>
+            <h1 className="text-6xl lg:text-9xl font-black tracking-tighter text-gray-900 leading-[0.85] mb-12 uppercase">
+              Reliable <br />
+              <span className="text-yellow-500">Maxi Taxi</span> <br />
+              <span className="text-gray-300">North Perth</span>
+            </h1>
+            <p className="text-xl lg:text-2xl text-gray-600 mb-16 leading-relaxed max-w-2xl mx-auto font-medium">
+              Specializing in Wheelchair Accessible transport and 12-passenger Maxi Taxis. 
+              Safe, spacious, and always on time for airport transfers, events, and medical appointments.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              <a
+                href="tel:0411946000"
+                className="flex items-center justify-center space-x-4 bg-black text-white px-10 py-6 rounded-3xl text-xl font-bold hover:bg-gray-800 transition-all shadow-2xl shadow-black/20 group"
+              >
+                <Phone className="h-7 w-7 group-hover:rotate-12 transition-transform" />
+                <span>0411 946 000</span>
+              </a>
+              <a
+                href="https://wa.me/61411946000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center space-x-4 bg-green-500 text-white px-10 py-6 rounded-3xl text-xl font-bold hover:bg-green-600 transition-all shadow-xl shadow-green-500/20 group"
+              >
+                <MessageCircle className="h-7 w-7 group-hover:scale-110 transition-transform" />
+                <span>WhatsApp</span>
+              </a>
+              <Link
+                to="/booking"
+                className="flex items-center justify-center space-x-4 bg-yellow-400 text-black px-10 py-6 rounded-3xl text-xl font-bold hover:bg-yellow-500 transition-all shadow-xl shadow-yellow-400/20"
+              >
+                <Calendar className="h-7 w-7" />
+                <span>Book Online</span>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+        
+        {/* Background Decorative Elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-0 opacity-[0.03] pointer-events-none overflow-hidden">
+          <div className="text-[20rem] font-black leading-none select-none">MAXI TAXI NORTH PERTH</div>
         </div>
       </section>
 
@@ -149,7 +126,7 @@ export default function Home() {
                 </Link>
               </div>
               <div className="absolute top-0 right-0 w-1/2 h-full opacity-20 group-hover:opacity-30 transition-opacity">
-                <img src="https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?auto=format&fit=crop&q=80&w=1000" alt="Wheelchair" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=1000" alt="Wheelchair" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               </div>
             </motion.div>
 
